@@ -23,26 +23,30 @@ document.onkeyup = function (event) {
     var joinedValue = lettersGuessed.join('');
     if (lettersGuessed.indexOf(key) === -1) {
         lettersGuessed.push(key);
-        guessesRemaining.innerText--;
         alreadyGuessed.innerText = joinedValue;
     };
+
     for (var i = 0; i < splitWord.length; i++) {
         if (key === splitWord[i]) {
             dashes[i] = key;
             key = currentWord.innerText;
             remainingLetters.innerText--;
-            guessesRemaining.innerText--;
 
         };
-        if (guessesRemaining === 0) {
-            alert ('Game Over Please Reload Page to Play Again');
-            return;
+
+        if (guessesRemaining.innerText === '0') {
+            alert('Game Over Please Reload Page to Play Again');
+
         }
-     };
-      document.addEventListener('keyup', function (e) {
-    if (e.keyCode == 13)
-        window.location.reload();
-})
+    };
+    currentWordDiv.innerText = dashes.join('');
+    guessesRemaining.innerText--;
+
+
+    document.addEventListener('keyup', function (e) {
+        if (e.keyCode == 13)
+            window.location.reload();
+    })
 }
 
 
