@@ -29,21 +29,17 @@ document.onkeyup = function (event) {
     for (var i = 0; i < splitWord.length; i++) {
         if (key === splitWord[i]) {
             dashes[i] = key;
-            dashes[i].innerHTML = dashes.join(' ');
-            splitWord[i].innerHTML = currentWord;
+            key = currentWord.innerText;
             remainingLetters.innerText--;
             guessesRemaining.innerText--;
 
-        }
-        else if (guessesRemaining > -1) {
-            alert ('Game Over Please Reload Page to Play Again');
-            return
         };
-
-        
-    };
-
-    document.addEventListener('keyup', function (e) {
+        if (guessesRemaining === 0) {
+            alert ('Game Over Please Reload Page to Play Again');
+            return;
+        }
+     };
+      document.addEventListener('keyup', function (e) {
     if (e.keyCode == 13)
         window.location.reload();
 })
